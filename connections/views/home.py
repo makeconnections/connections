@@ -1,0 +1,10 @@
+import re
+from docutils.core import publish_parts
+from pyramid.compat import escape
+from pyramid.httpexceptions import HTTPFound, HTTPNotFound
+from pyramid.view import view_config
+
+
+@view_config(route_name='home', renderer='../templates/home.jinja2')
+def home(request):
+    return dict()

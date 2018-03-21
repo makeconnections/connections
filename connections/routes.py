@@ -7,7 +7,6 @@ from pyramid.security import (
     Everyone,
 )
 
-from .models import Seed, Nurture
 
 def includeme(config):
     config.add_static_view('static', 'static', cache_max_age=3600)
@@ -23,8 +22,8 @@ def includeme(config):
 
 
 def seed_factory(request):
-    seed_id = request.matchdict['seed_id']
-    seed = request.dbsession.query(Seed).filter_by(seed_id=seed_id).first()
+    seed_id = int(request.matchdict['seed_id'])
+    seed = request.db.get_collection('seeds').find_one({'seed_id': seed_id})
     if seed is None:
         raise HTTPNotFound
     return SeedResource(seed)
@@ -37,8 +36,6 @@ class SeedResource(object):
     def __acl__(self):
         return [
             (Allow, Everyone, 'view'),
-            (Allow, 'role:editor', 'edit'),
-            (Allow, str(self.seed.creator_id), 'edit'),
         ]
 
 
@@ -57,6 +54,4 @@ class NurtureResource(object):
     def __acl__(self):
         return [
             (Allow, Everyone, 'view'),
-            (Allow, 'role:editor', 'edit'),
-            (Allow, str(self.nurture.creator_id), 'edit'),
         ]

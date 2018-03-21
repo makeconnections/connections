@@ -10,6 +10,7 @@ requires = [
     'bcrypt',
     'docutils',
     'plaster_pastedeploy',
+    'pymongo',
     'pyramid >= 1.9a',
     'pyramid_debugtoolbar',
     'pyramid_jinja2',
