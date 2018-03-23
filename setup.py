@@ -7,10 +7,13 @@ with open(os.path.join(here, 'README.md')) as f:
     README = f.read()
 
 requires = [
+]
+
+_req = """
     'bcrypt',
     'docutils',
+    'gunicorn',
     'plaster_pastedeploy',
-    'pymongo',
     'pyramid >= 1.9a',
     'pyramid_debugtoolbar',
     'pyramid_jinja2',
@@ -19,7 +22,7 @@ requires = [
     'transaction',
     'waitress',
     'webtest',
-]
+"""
 
 tests_require = [
     'WebTest >= 1.3.1',  # py3 compat

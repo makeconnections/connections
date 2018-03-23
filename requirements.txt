@@ -1,0 +1,13 @@
+bcrypt
+docutils
+gunicorn
+plaster_pastedeploy
+pymongo
+pyramid >= 1.9a
+pyramid_debugtoolbar
+pyramid_jinja2
+pyramid_retry
+pyramid_tm
+transaction
+waitress
+webtest
